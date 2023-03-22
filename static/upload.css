@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  font-family: 'Neucha';
+}
+body{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #CDE990;
+}
+
+.drag-area{
+  width: 500px;
+  height: 60vh;
+
+
+  background: #ECF5F0;
+  border-radius: 20px;
+}
+
+#front1{
+  
+  font-style: normal;
+  font-weight: 400;
+  font-size: 60px;
+  line-height: 66px;
+  text-align: center;
+  margin-top: 300px;
+  color: rgba(0, 0, 0, 0.7);
+
+}
+.drag-out-area button{
+  font-style: bold;
+  font-size: 20px;
+  background: #FFF8F8;
+  border: 1px solid #C5C5C5;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+  width: 160px;
+  height: 40px;
+  margin-top: 40px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+

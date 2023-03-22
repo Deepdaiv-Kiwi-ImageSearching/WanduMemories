@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <link rel="stylesheet" href="../static/upload.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Neucha&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <script src="../static/upload.js"></script>
+  </head>
+  <body>
+    <div class="drag-area">
+      <div class="icon" id="front0">
+        <i class="fas fa-cloud-upload-alt"></i>
+      </div>
+      <header id="front1">Upload Image</header>
+      <input type="file" id="upload-file" hidden />
+    </div>
+    <div class="drag-out-area">
+      <button
+        class="submitButton"
+        id="submitButton"
+        type="button"
+        onclick="upload()"
+      >
+        > Upload
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
