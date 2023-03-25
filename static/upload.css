@@ -34,9 +34,9 @@ body{
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
+  margin: 0 auto;
   background: #ECF5F0;
-border-radius: 20px;
+  border-radius: 20px;
 }
 .drag-out-area{
   height: 100px;
