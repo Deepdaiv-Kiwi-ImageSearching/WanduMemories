@@ -1,10 +1,12 @@
+from config import AWS_ACCESS_KEY, AWS_SECRET_KEY, BUCKET_NAME
+import boto3
 from flask import Flask, render_template, request, flash, redirect, url_for
 from werkzeug.utils import secure_filename
 
 app = Flask(__name__)
 
 
-# page
+# get pages
 @app.route('/')
 def home_page():
    return render_template('index.html')
@@ -19,26 +21,52 @@ def upload_page():
 
 
 
-# s3 connection
-# import boto3
-# def s3_connection():
-   
-
 
 # file uploading
+def s3_connection():
+   try:
+      s3 = boto3.client(
+            "s3",
+            region_name="ap-northeast-2",
+            aws_access_key_id=AWS_ACCESS_KEY,
+            aws_secret_access_key=AWS_SECRET_KEY
+         )
+   except Exception as e:
+      print(e)
+   else:
+      print("s3 bucket connected!")
+      return s3
+
+
 @app.route('/file_upload', methods=['POST'])
 def upload_image():
    if request.method == "POST":
       if request.files['file'].filename == '':
-          flash('파일이 없습니다. 파일을 제출하세요!') 
-          # 파일이 없으면 flash 전달. (현재 창에서 flash 메시지 출력.) 
+          flash('파일이 없습니다') 
           return redirect(url_for('upload'))
+      # 파일 업로드
       f = request.files['file']
-      f.save(secure_filename(f.filename))
-      return '파일이 저장되었습니다'
+      # f.save(secure_filename(f.filename))
+      
+      # 모델 적용
+      
+
+      
+      # s3 연동
+      s3 = s3_connection()
+      s3.put_object(
+         Bucket = BUCKET_NAME,
+         Body = f,
+         Key = f.filename,
+         ContentType = f.content_type
+      )
+      return render_template('index.html')
    else:
       return render_template('upload.html')
    
+
+# 모델 불러오기
+
    
    
    
