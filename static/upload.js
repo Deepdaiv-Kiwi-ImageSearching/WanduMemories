@@ -5,13 +5,17 @@ button = dropArea.querySelector("button"),
 input = dropArea.querySelector("input");
 let file; // file 전역 변수.
 
-function redirect(){
-  console.log("rrrr");
-  location.reload();
-}
-function upload(){
-  console.log("dddd");
-}
+
+var send = document.getElementById("submitButton");
+send.addEventListener("click", function () {
+  console.log("ddd");
+  var form = document.getElementById("form");
+  var file = document.getElementById('upload-file').files[0];
+
+  form.action = "http://localhost:5000/file_upload";
+  form.mothod = "Post";
+  form.submit();
+});
 
 button.onclick = ()=>{
   input.click(); // 사용자가 버튼을 클릭하면 입력도 클릭.

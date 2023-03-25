@@ -46,5 +46,4 @@ def upload_image():
 	
 if __name__ == '__main__':  
    app.run('0.0.0.0',port=5000,debug=True)
-   app.secret_key = 'super secret key'
-   app.config['SESSION_TYPE'] = 'filesystem'
+
