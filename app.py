@@ -37,9 +37,9 @@ def home_page():
     return render_template('index.html')
 
 
-@app.route('/list')
-def list_page():
-    return render_template('list.html')
+@app.route('/gallery')
+def gallery_page():
+    return render_template('Gallery.html')
 
 
 @app.route('/upload')
@@ -67,7 +67,7 @@ def upload_image():
             "INSERT INTO pictures (filename, ocr_result, caption_result) "
             "VALUES (%s, %s, %s)"
         )
-        data = (file.filename, "dddd", "안녕")
+        data = (file.filename, "dddd", "귀여움")
         cursor.execute(insert_stmt, data)
         conn.commit()
         conn.close()
@@ -89,25 +89,28 @@ def upload_image():
 # 결과 도출
 @app.route('/list_result', methods=['POST'])
 def image_list():
-   search_word = request.form['search-word']
-   print(search_word)
-   conn = mysql.connect()
-   cursor = conn.cursor()
-   sql = "SELECT * FROM pictures WHERE caption_result=%s OR ocr_result=%s";
-   cursor.execute(sql, (search_word, search_word))
-   
-   rows = cursor.fetchall()
-   result_list = []
-   for e in rows:
-      print(e)
-      result_list.append(e[1])
-   print(result_list)
-   conn.commit()
-   conn.close()
-   
-   image_s3_url = [ f"https://{BUCKET_NAME}.s3.{LOCATION}.amazonaws.com/{filename}" for filename in result_list]  
-   return render_template('list.html', data = image_s3_url)
+    try:
+        search_word = request.form['search-word']
+        print(search_word)
+        conn = mysql.connect()
+        cursor = conn.cursor()
+        sql = "SELECT * FROM pictures WHERE caption_result=%s OR ocr_result=%s";
+        cursor.execute(sql, (search_word, search_word))
+        
+        rows = cursor.fetchall()
+        result_list = []
+        for e in rows:
+            print(e)
+            result_list.append(e[1])
+        print(result_list)
+        conn.commit()
+        conn.close()
+        
+        image_s3_url = [ f"https://{BUCKET_NAME}.s3.{LOCATION}.amazonaws.com/{filename}" for filename in result_list]  
+        return render_template('Gallery.html', data = image_s3_url)
+    except Exception as e:
+        print(e)
 
 
 if __name__ == '__main__':
-    app.run('0.0.0.0', port=5003, debug=True)
+    app.run('0.0.0.0', port=5001, debug=True)
