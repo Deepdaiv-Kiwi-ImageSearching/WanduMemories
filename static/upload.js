@@ -8,14 +8,22 @@ let file; // file 전역 변수.
 
 var send = document.getElementById("submitButton");
 send.addEventListener("click", function () {
-  console.log("ddd");
   var form = document.getElementById("form");
   var file = document.getElementById('upload-file').files[0];
 
-  form.action = "http://localhost:5000/file_upload";
-  form.mothod = "Post";
-  form.submit();
+  if (file){
+    form.action = "/file_upload";
+    form.method = "Post";
+    form.submit();
+
+  }else{
+    console.log("파일이 없어!")
+  }
+  
 });
+
+
+
 
 button.onclick = ()=>{
   input.click(); // 사용자가 버튼을 클릭하면 입력도 클릭.
@@ -24,6 +32,7 @@ button.onclick = ()=>{
 input.addEventListener("change", function(){
   //사용자 선택 파일 가져오기, [0] 이것은 사용자가 여러 파일을 선택하는 경우 첫 번째 파일만 가져옴
   file = this.files[0];
+  console.log(file)
   dropArea.classList.add("active");
   showFile(); //함수 호출
 });
@@ -45,9 +54,12 @@ dropArea.addEventListener("dragleave", ()=>{
 //사용자가 DropArea에 파일을 드롭하는 경우
 dropArea.addEventListener("drop", (event)=>{
   event.preventDefault(); //기본 동작 방지
-  file = event.dataTransfer.files[0]; //여러파일을 선택하면 첫번째 파일을 가져옴
+  file = event.dataTransfer.files[0]; 
+  console.log(file)
+  $("input[type='file']").prop("file", file);
+  dropArea.classList.add("active");
   showFile(); //calling function
-
+  console.log("ddddfff")
 });
 
 function showFile(){
@@ -71,8 +83,10 @@ function showFile(){
       con1.style.display = 'none';
       con2.style.display = 'none';
       con3.style.display = 'none';
+
     }
     fileReader.readAsDataURL(file);
+    
   }else{
     alert("This is not an Image File!");
     dropArea.classList.remove("active");

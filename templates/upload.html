@@ -17,7 +17,13 @@
     />
   </head>
   <body>
-    <form method="post" id="form" onsubmit="return false;" enctype="multipart/form-data">
+    <form
+      method="post"
+      id="form"
+      onsubmit="return false;"
+      enctype="multipart/form-data"
+    >
+
       <div class="drag-area">
         <div class="icon" id="front0">
           <img class="cloud-img" src="../static/img/Vector.svg" />
@@ -27,13 +33,13 @@
         <button id="front3">Browse File</button>
         <input type="file" name="file" id="upload-file" hidden />
       </div>
+
       <div class="drag-out-area">
         <button
           type="button"
           onclick="location.href='./upload'"
           style="margin-right: 20px"
-        >
-          > Cancel
+        > > Cancel
         </button>
 
         <button class="submitButton" id="submitButton" type="submit">

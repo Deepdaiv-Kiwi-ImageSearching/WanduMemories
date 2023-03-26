@@ -10,9 +10,7 @@ import torchvision.transforms as T
 from collections import Counter
 import spacy
 
-
 spacy_eng = spacy.load("en_core_web_sm")
-#spacy_eng = en_core_web_sm.load()
 device = "cuda" if torch.cuda.is_available() else "cpu"
 import os
 os.environ["KMP_DUPLICATE_LIB_OK"]=True
