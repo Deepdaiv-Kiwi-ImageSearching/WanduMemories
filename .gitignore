@@ -281,4 +281,5 @@ pyrightconfig.json
 config.py
 .DS_Store
 
+
 # End of https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode
