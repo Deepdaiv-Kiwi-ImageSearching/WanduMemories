@@ -4,7 +4,7 @@ app = Flask(__name__)
 @app.route('/mypage')
 def home2():
    return 'mypage입니다'
-
+ddddd
 @app.route('/')
 def home():
    return render_template('index.html')
