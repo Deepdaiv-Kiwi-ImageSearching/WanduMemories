@@ -19,9 +19,9 @@
     </a>
 
     <div class="search-box">
-        <form action="." method="post">
-        <input class="search-txt" type="text" placeholder="검색어를 입력해 주세요">
-        <a class="search-btn" type="submit">
+        <form action="/list_result" method="post" id="search-form">
+        <input class="search-txt" type="text" name="search-word" placeholder="검색어를 입력해 주세요">
+        <a class="search-btn" type="submit" onclick="document.getElementById('search-form').submit();" >
             <i class="fas fa-search"></i>
         </a>
         </form>
