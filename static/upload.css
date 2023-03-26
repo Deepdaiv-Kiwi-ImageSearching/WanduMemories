@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Neucha', sans-serif;
+}
+body{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #CDE990;
+  /* background: #6667AB; */
+}
+/* .result-area{
+  border: 3px dashed #fff;
+  height: 500px;
+  width: 700px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+} */
+.drag-area{
+  border: 2px dashed #fff;
+  height: 450px;
+  width: 650px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 auto;
+  background: #ECF5F0;
+  border-radius: 20px;
+}
+.drag-out-area{
+  height: 100px;
+  width: 700px;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.drag-area.active{
+  border: 4px solid #fff;
+}
+.drag-area .icon{
+    margin-bottom: 30px;
+  font-size: 100px;
+  color: #fff;
+}
+
+.drag-area .icon .cloud-img{
+    filter: invert(100%) sepia(7%) saturate(5375%) hue-rotate(215deg) brightness(122%) contrast(104%);
+    /* filter: invert(91%) sepia(11%) saturate(219%) hue-rotate(79deg) brightness(109%) contrast(92%); */
+}
+
+.drag-area header{
+  font-size: 40px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.8);
+}
+.drag-area span{
+  font-size: 25px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 10px 0 15px 0;
+}
+.drag-out-area span{
+  font-size: 30px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.8);
+  margin: 10px 0 15px 0;
+}
+.drag-area button{
+  padding: 10px 25px;
+  font-size: 20px;
+  font-weight: 700;
+  border: none;
+  outline: none;
+  background: #fff;
+  color:  rgba(0, 0, 0, 0.8);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.drag-area img{
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+}
+.drag-out-area button{
+    font-style: bold;
+    font-weight:900;
+    font-size: 20px;
+    background: #FFF8F8;
+    border: 1px solid #C5C5C5;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+    width: 160px;
+    height: 40px;
+    margin-top: 40px;
+    vertical-align: middle;
+    cursor: pointer;
+  }
+  

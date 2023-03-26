@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>File Upload</title>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <link
+      href="{{ url_for('static', filename='upload.css') }}"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Neucha&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <form
+      method="post"
+      id="form"
+      onsubmit="return false;"
+      enctype="multipart/form-data"
+    >
+
+      <div class="drag-area">
+        <div class="icon" id="front0">
+          <img class="cloud-img" src="../static/img/Vector.svg" />
+        </div>
+        <header id="front1">Drag & Drop to Upload Image</header>
+        <span id="front2">OR</span>
+        <button id="front3">Browse File</button>
+        <input type="file" name="file" id="upload-file" hidden />
+      </div>
+
+      <div class="drag-out-area">
+        <button
+          type="button"
+          onclick="location.href='./upload'"
+          style="margin-right: 20px"
+        > > Cancel
+        </button>
+
+        <button class="submitButton" id="submitButton" type="submit">
+          > Confirm
+        </button>
+      </div>
+    </form>
+  </body>
+  <script src="{{ url_for('static', filename='upload.js') }}"></script>
+</html>
