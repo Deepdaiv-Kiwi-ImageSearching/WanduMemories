@@ -1,0 +1,60 @@
+body {
+    margin-top: 30px;
+    width: 1440px;
+    height: 1024px;
+    background: #CDE990;
+}
+.search-img {
+    text-align: center;
+}
+.search-box {
+    position: absolute;
+    left: 450px;
+    top: 55px;
+}
+.search-txt {
+    float: left;
+    padding: 0;
+    background: none;
+    border: none;
+    outline: none;
+    font-size: 45px;
+    line-height: 30px;
+}
+.search-btn{
+    font-size: 50px;
+    position: relative;
+    top: -10px;
+}
+.gallery {
+    margin: 50px;
+    animation: fadein-g 2s;
+    overflow-x: scroll;
+}
+.gallery div {
+    overflow: auto;
+}
+.gallery img {
+    height: 300px;
+    margin: 5px 20px 5px 0;
+}
+.gallery img:not(.p_img) {
+    width: 200px;
+}
+.gallery::-webkit-scrollbar {
+    height: 10px;
+}
+.gallery::-webkit-scrollbar-thumb {
+    background-color: #A1CE5D;
+    border-radius: 6px;
+}
+.gallery::-webkit-scrollbar-track {
+    background-color: #88B048;
+    border-radius: 6px;
+}
+@media screen and (max-width: 720px) {
+    .gallery img {
+        height: 200px;
+        margin-right: 10px;
+    }
+}
