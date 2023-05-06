@@ -281,6 +281,11 @@ pyrightconfig.json
 config.py
 .DS_Store
 
+<<<<<<< HEAD
 nic_decoder_ResNet101.ckpt
+=======
+nic_decoder_ResNet1011.ckpt
+nic_encoder_ResNet1011.ckpt
+>>>>>>> d3991ab0824ec9463e9988996a862d1d6a971182
 
 # End of https://www.toptal.com/developers/gitignore/api/flask,python,visualstudiocode
