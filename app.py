@@ -1,10 +1,42 @@
 from config import AWS_ACCESS_KEY, AWS_SECRET_KEY, BUCKET_NAME, LOCATION, aws_db
 import boto3
+import pickle
 from flask import Flask, render_template, request, flash, redirect, url_for
-# from werkzeug.utils import secure_filename
+from werkzeug.utils import secure_filename
 from flaskext.mysql import MySQL
+import os
+from ocr import ocr_operation
+from model_new import Vocabulary, ImageCaptioning
+
 
 app = Flask(__name__)
+
+# class Vocabulary(object):
+#   # Simple vocabulary wrapper
+#   def __init__(self):
+#     self.word2idx = {}
+#     self.idx2word = {}
+#     self.idx = 0
+
+#   def add_word(self, word):
+#     if not word in self.word2idx:
+#       self.word2idx[word] = self.idx
+#       self.idx2word[self.idx] = word
+#       self.idx += 1
+
+#   def __call__(self, word):
+#     if not word in self.word2idx:
+#       return self.word2idx['<UNK>']
+#     return self.word2idx[word]
+
+#   def __len__(self):
+#     return len(self.word2idx)
+
+# with open("vocab.pkl", 'rb') as f:
+#     vocab = pickle.load(f)
+#     print(vocab)
+
+captioning_res = ImageCaptioning()
 
 # mysql
 mysql = MySQL()
@@ -31,16 +63,15 @@ def s3_connection():
         return s3
 
 
+
 # get pages
 @app.route('/')
 def home_page():
     return render_template('index.html')
 
-
 @app.route('/gallery')
 def gallery_page():
     return render_template('Gallery.html')
-
 
 @app.route('/upload')
 def upload_page():
@@ -56,9 +87,14 @@ def upload_image():
             flash('파일이 없습니다')
             return redirect(url_for('upload'))
         file = request.files['file']
-        # f.save(secure_filename(f.filename))
+        file.save(secure_filename(file.filename))
 
         # 2. 모델 적용
+        ocr_result = ocr_operation(file.filename)
+        print(ocr_result)
+        captioning_result = captioning_res.generate_captions(file.filename)
+        print(captioning_result)
+        
 
         # 3. mysql 적용
         conn = mysql.connect()
@@ -67,7 +103,7 @@ def upload_image():
             "INSERT INTO pictures (filename, ocr_result, caption_result) "
             "VALUES (%s, %s, %s)"
         )
-        data = (file.filename, "dddd", "귀여움")
+        data = (file.filename, "ddd", "귀여움")
         cursor.execute(insert_stmt, data)
         conn.commit()
         conn.close()
@@ -114,3 +150,9 @@ def image_list():
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5001, debug=True)
+    
+    
+    
+    
+    
+    
